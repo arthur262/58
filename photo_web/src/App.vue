@@ -1,28 +1,40 @@
 <template>
 <div>
+  <button @click="data_send()">测试json</button>
 </div>
   
 </template>
 
 <script>
-
+import qs from 'qs';
 
 export default {
   name: 'App',
   components: {
    
   },
+  data() {
+    return {
+    usernames: {
+      name: 'Usernames',
+      password: 'Password'
+    },
+    }
+  },
   mounted: function (){
-    this.getdata();
     
   },
   methods:{
-    getdata(){
+    data_send(){
       this.axios
-        .get(
+        .post(
+          "/login.js",
+        {params: qs.stringify(this.usernames)},
+        {headers:{"Content-type":"application/x-www-form-urlencoded"}}
         )
+
         .then((response) => {
-          
+          console.log(response);
 
           
         })
