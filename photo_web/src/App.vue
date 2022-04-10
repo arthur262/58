@@ -1,23 +1,47 @@
 <template>
-  <img src="./assets/logo.png">
+  
   <div>
-    <p>
-      If Element Plus is successfully added to this project, you'll see an
-      <code v-text="'<el-button>'"></code>
-      below
-    </p>
-    <el-button type="primary">el-button</el-button>
+   <button v-on:click="data_send()">xxxx</button>
   </div>
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+ 
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+   
+  },
+  data() {
+    return {
+    username: "xxx",
+    }
+  },
+  mounted: function (){
+    
+  },
+  methods:{
+    data_send(){
+      this.axios
+        .post(
+          "http://localhost:8081/login",
+          {
+    username: "xxx"
+    }
+        )
+
+        .then((response) => {
+          console.log(response);
+
+          
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+
   }
 }
 </script>
