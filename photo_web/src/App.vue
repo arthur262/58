@@ -1,12 +1,17 @@
 <template>
-<div>
-  <button @click="data_send()">测试json</button>
-</div>
+
   
+  <div>
+   <button v-on:click="data_send()">xxxx</button>
+  </div>
+ 
 </template>
 
 <script>
+import axios from 'axios'
 import qs from 'qs';
+
+
 
 export default {
   name: 'App',
@@ -15,6 +20,7 @@ export default {
   },
   data() {
     return {
+
     usernames: {
       name: 'Usernames',
       password: 'Password'
@@ -26,11 +32,11 @@ export default {
   },
   methods:{
     data_send(){
-      this.axios
-        .post(
-          "/login.js",
-        {params: qs.stringify(this.usernames)},
-        {headers:{"Content-type":"application/x-www-form-urlencoded"}}
+
+      
+      axios.post(
+        "/api/login"
+        ,this.username
         )
 
         .then((response) => {
