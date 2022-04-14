@@ -7,6 +7,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 
 
 export default {
@@ -24,12 +26,10 @@ export default {
   },
   methods:{
     data_send(){
-      this.axios
-        .post(
-          "http://localhost:8081/login",
-          {
-    username: "xxx"
-    }
+      
+      axios.post(
+        "/api/login"
+        ,this.username
         )
 
         .then((response) => {
