@@ -1,4 +1,5 @@
 <template>
+
   
   <div>
    <button v-on:click="data_send()">xxxx</button>
@@ -8,6 +9,7 @@
 
 <script>
 import axios from 'axios'
+import qs from 'qs';
 
 
 
@@ -18,7 +20,11 @@ export default {
   },
   data() {
     return {
-    username: "xxx",
+
+    usernames: {
+      name: 'Usernames',
+      password: 'Password'
+    },
     }
   },
   mounted: function (){
@@ -26,6 +32,7 @@ export default {
   },
   methods:{
     data_send(){
+
       
       axios.post(
         "/api/login"
