@@ -1,18 +1,13 @@
 <template>
-
-  
-  <div>
-   <button v-on:click="data_send()">xxxx</button>
+  <div style="width:fit-content;
+  min-height:100vh;
+  margin:0 auto;">
+   <router-view />
   </div>
  
 </template>
 
 <script>
-import axios from 'axios'
-import qs from 'qs';
-
-
-
 export default {
   name: 'App',
   components: {
@@ -21,10 +16,7 @@ export default {
   data() {
     return {
 
-    usernames: {
-      name: 'Usernames',
-      password: 'Password'
-    },
+    
     }
   },
   mounted: function (){
@@ -32,11 +24,8 @@ export default {
   },
   methods:{
     data_send(){
-
-      
-      axios.post(
+      this.axios.post(
         "/api/login"
-        ,this.username
         )
 
         .then((response) => {
@@ -53,13 +42,20 @@ export default {
 }
 </script>
 
-<style>
+<style >
+:root{
+  --el-color-primary:#FFB52E !important;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin:0;
+  padding:0;
+
 }
+
+
 </style>
