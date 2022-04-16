@@ -1,19 +1,20 @@
 <template>
 <div>
-  <Navigate/>
-    
+  
+  <QuickGuide/>  
 </div>
   
 </template>
 
 <script>
-import Navigate from '@/components/NavBar.vue'; 
+
+import QuickGuide from '@/components/Buy&Sell/Quick_guide.vue';
 
 
 export default {
 name: 'HomePage',
   components: {
-   Navigate
+   QuickGuide
   },
 }
 </script>
