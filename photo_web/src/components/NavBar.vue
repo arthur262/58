@@ -103,6 +103,7 @@ export default {
       this.activeIndex = keyPath;
     },
     testwidth(){
+      this.activeIndex=window.location.hash.slice(1);
       if(!is_phone()){
         this.getDom();
       }

@@ -7,24 +7,22 @@
         <el-menu
           default-active=""
           class="el-menu-vertical-demo"
-          @open="handleOpen"
-          @close="handleClose"
         >
           <el-menu-item index="1">
-            <el-icon><icon-menu /></el-icon>
-            <span>Navigator One</span>
+            
+            <span>二手车</span>
           </el-menu-item>
           <el-menu-item index="2">
-            <el-icon><icon-menu /></el-icon>
-            <span>Navigator One</span>
+            
+            <span>家具</span>
           </el-menu-item>
           <el-menu-item index="3">
-            <el-icon><icon-menu /></el-icon>
-            <span>Navigator One</span>
+           
+            <span>服饰&化妆品</span>
           </el-menu-item>
           <el-menu-item index="4">
-            <el-icon><icon-menu /></el-icon>
-            <span>Navigator One</span>
+            
+            <span>电子器件</span>
           </el-menu-item>
           
           
