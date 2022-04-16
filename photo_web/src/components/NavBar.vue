@@ -92,10 +92,9 @@ export default {
       nav_box.value.style = "padding:1.5ch 2ch";
     };  
     return { nav_box, getDom};
-    
-    
   },
   mounted: function (){
+    
     this.testwidth();
   },
   methods: {
@@ -103,9 +102,13 @@ export default {
       this.activeIndex = keyPath;
     },
     testwidth(){
-      this.activeIndex=window.location.hash.slice(1);
+      
       if(!is_phone()){
         this.getDom();
+      }
+      this.activeIndex=window.location.hash.slice(1);
+      if(this.activeIndex=="/"){
+        this.activeIndex="/Home";
       }
     }
     
