@@ -1,21 +1,28 @@
 <template>
+<div>
+  <Top/>
   <div style="width:fit-content;
   min-height:100vh;
   margin:0 auto;">
   <div style="margin:0 auto; width:fit-content;">
   <Navigate/>
+  
   </div>
    <router-view />
   </div>
- 
+</div>
 </template>
 
 <script>
 import Navigate from '@/components/NavBar.vue';
+import Top from '@/components/topBar.vue';
+
 export default {
   name: 'App',
   components: {
-   Navigate
+   Navigate, 
+   Top
+
   },
   data() {
     return {
