@@ -10,19 +10,19 @@
           router
         >
           
-            <el-menu-item index="/ershouche">
+            <el-menu-item index="/Home/PosterList?view=ershouche">
             <span>二手车</span>
             </el-menu-item>
           
-           <el-menu-item index="/jiaju">
+           <el-menu-item index="/Home/PosterList?view=jiaju">
             <span>家具</span>
             </el-menu-item>
 
-            <el-menu-item index="/huazhuangpin">
+            <el-menu-item index="/Home/PosterList?view=ershouche">
             <span>服饰&化妆品</span>
             </el-menu-item>
             
-          <el-menu-item index="/dianziqijian">  
+          <el-menu-item index="/Home/PosterList?view=ershouche">  
             <span>电子器件</span>
           </el-menu-item>
           

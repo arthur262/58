@@ -34,7 +34,7 @@ import Card from "@/components/PostCard.vue";
 export default {
   data() {
     return {
-      user_location: "xxx",
+      user_location: "",
       poster: [
         {
           id: "xxx",

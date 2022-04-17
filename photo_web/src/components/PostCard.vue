@@ -10,6 +10,7 @@
       <el-row v-if="getJsonLength(item.picture) < 2">
         
         <el-col :span="8">
+          
           <el-image
             :src="item.picture[0]"
             loading="lazy"
