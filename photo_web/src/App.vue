@@ -4,6 +4,7 @@
   margin:0 auto;">
   <div style="margin:0 auto; width:fit-content;">
   <Navigate/>
+  <Top/>
   </div>
    <router-view />
   </div>
@@ -12,10 +13,14 @@
 
 <script>
 import Navigate from '@/components/NavBar.vue';
+import Top from '@/components/topBar.vue';
+
 export default {
   name: 'App',
   components: {
-   Navigate
+   Navigate, 
+   Top
+
   },
   data() {
     return {
