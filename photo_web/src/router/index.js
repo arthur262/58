@@ -10,7 +10,33 @@ const routes = [
   {
     path: '/Home',
     name: 'Home',
-    component: HomeView
+    component: HomeView,
+    children: [
+      {
+      path: '/',
+      name: 'Home',
+      component: HomeView
+      },{
+        path: '/ershouche',
+        name: 'ershouche',
+        component:"",
+      }
+      ,{
+        path: '/jiaju',
+        name: 'jiaju',
+        component:"",
+      }
+      ,{
+        path: '/huazhuangpin',
+        name: 'huazhuangpin',
+        component:"",
+      }
+      ,{
+        path: '/dianziqijian',
+        name: 'dianziqijian',
+        component:"",
+      }
+    ]
   },
   {
     path: '/School',

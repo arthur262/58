@@ -7,21 +7,22 @@
         <el-menu
           default-active=""
           class="el-menu-vertical-demo"
+          router
         >
-          <el-menu-item index="1">
-            
+          
+            <el-menu-item index="/ershouche">
             <span>二手车</span>
-          </el-menu-item>
-          <el-menu-item index="2">
-            
+            </el-menu-item>
+          
+           <el-menu-item index="/jiaju">
             <span>家具</span>
-          </el-menu-item>
-          <el-menu-item index="3">
-           
+            </el-menu-item>
+
+            <el-menu-item index="/huazhuangpin">
             <span>服饰&化妆品</span>
-          </el-menu-item>
-          <el-menu-item index="4">
+            </el-menu-item>
             
+          <el-menu-item index="/dianziqijian">  
             <span>电子器件</span>
           </el-menu-item>
           
