@@ -34,20 +34,6 @@ export default {
     
   },
   methods:{
-    data_send(){
-      this.axios.post(
-        "/api/login"
-        )
-
-        .then((response) => {
-          console.log(response);
-
-          
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    }
 
   }
 }

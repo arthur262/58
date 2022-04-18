@@ -1,5 +1,5 @@
 <template>
-  <div style="width: 80ch; margin: 5ch auto">
+  <div style="width: 90ch; margin: 5ch auto">
     <el-row class="block-col-2">
 
       <el-col :span="18" style="display:flex;">
@@ -15,7 +15,7 @@
 
           <template #dropdown>
             <el-dropdown-menu>
-              <el-dropdown-item command="ALL">ALL</el-dropdown-item>
+              <el-dropdown-item command="Whole Halifax">Whole Halifax</el-dropdown-item>
               <el-dropdown-item command="DownTown">Halifax DownTown</el-dropdown-item>
               <el-dropdown-item command="Dartmouth">Dartmouth</el-dropdown-item>
               <el-dropdown-item command="Beford">Beford</el-dropdown-item>
@@ -34,65 +34,34 @@ import Card from "@/components/PostCard.vue";
 export default {
   data() {
     return {
-      user_location: "",
+      user_location: "Whole Halifax",
       poster: [
-        {
-          id: "xxx",
-          title: "This is a title",
-          location: "location",
-          label: "label",
-          time: "time",
-          description: "This is a description This is a description This is a description This is a description This is a description",
-          picture: [
-            "http://arthur1.oss-us-west-1.aliyuncs.com/self-web/image/%E5%9B%BE%E7%89%87.png",
-          ],
-        },
-        {
-          title: "This is a title",
-          location: "location",
-          label: "label",
-          time: "time",
-          description: "This is adescription",
-          picture: [
-            "http://arthur1.oss-us-west-1.aliyuncs.com/self-web/image/%E5%9B%BE%E7%89%87.png",
-            "http://arthur1.oss-us-west-1.aliyuncs.com/self-web/image/%E5%9B%BE%E7%89%87.png",
-            "http://arthur1.oss-us-west-1.aliyuncs.com/self-web/image/%E5%9B%BE%E7%89%87.png",
-            "http://arthur1.oss-us-west-1.aliyuncs.com/self-web/image/%E5%9B%BE%E7%89%87.png",
-          ],
-        },
-        {
-          title: "This is a title",
-          location: "location",
-          label: "label",
-          time: "time",
-          description: "This is adescription",
-          picture: [
-            "http://arthur1.oss-us-west-1.aliyuncs.com/self-web/image/%E5%9B%BE%E7%89%87.png",
-            "http://arthur1.oss-us-west-1.aliyuncs.com/self-web/image/%E5%9B%BE%E7%89%87.png",
-          ],
-        },
-        {
-          title: "This is a title",
-          location: "location",
-          label: "label",
-          time: "time",
-          description: "This is adescription",
-          picture: [
-            "http://arthur1.oss-us-west-1.aliyuncs.com/self-web/image/%E5%9B%BE%E7%89%87.png",
-            "http://arthur1.oss-us-west-1.aliyuncs.com/self-web/image/%E5%9B%BE%E7%89%87.png",
-            "http://arthur1.oss-us-west-1.aliyuncs.com/self-web/image/%E5%9B%BE%E7%89%87.png",
-          ],
-        },
-      ],
+	]
+      
     };
   },
   components: {
     Card,
   },
+  mounted: function () {
+	this.get_post_list();
+  },
   methods: {
     handleCommand(msg){
       this.user_location=msg;
 
+    },
+	get_post_list(){
+      this.axios.post(
+        "/api/Post"
+        )
+
+        .then((response) => {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     }
   }
 };

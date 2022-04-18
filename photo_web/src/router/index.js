@@ -15,7 +15,7 @@ const routes = [
   {
     path: '/Home/PosterList',
     name: 'PosterList',
-    component: () => import('@/components/Second_le_Web/Poster_List.vue'),
+    component: () => import('@/components/Buy&Sell/Poster_List.vue'),
   },
 
   {
