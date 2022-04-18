@@ -1,18 +1,6 @@
 {
-	"poster": [
+	"posters":[
 		{
-			"id": "xxx",
-			"title": "This is a title",
-			"location": "Whole Halifax",
-			"label": "label",
-			"time": "time",
-			"description": "This is a description This is a description This is a description This is a description This is a description",
-			"picture": [
-				"http://arthur1.oss-us-west-1.aliyuncs.com/self-web/image/%E5%9B%BE%E7%89%87.png"
-			]
-		},
-		{
-			"id": "xxx",
 			"title": "Curtis Stone Soup Maker 全新，可以做豆浆",
 			"location": "Halifax DownTown",
 			"label": "新品出售信息",
@@ -37,11 +25,11 @@
 			]
 		},
 		{
-			"id": "xxx",
 			"title": "复方黄连素片和藿香正气颗粒,6月和8月分别到期,全新未拆,免费自取,短信联系",
 			"location": "Halifax DownTown",
 			"label": "二手出售",
 			"time": "2022-04-17 21:11",
+			"phone": 9024108972,
 			"description": ["复方黄连素片和藿香正气颗粒,6月和8月分别到期,全新未拆,免费自取,短信联系"],
 			"picture": [
 				"http://arthur1.oss-us-west-1.aliyuncs.com/self-web/image/%E5%9B%BE%E7%89%87.png",
@@ -49,4 +37,4 @@
 			]
 		}
 	]
-}
+	}
