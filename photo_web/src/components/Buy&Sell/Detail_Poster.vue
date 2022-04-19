@@ -51,10 +51,11 @@ export default {
   methods: {
     handleCommand(msg) {
       this.user_location = msg;
+      this.get_post_list();
     },
     get_post_list() {
       this.axios
-        .post("/api/Post")
+        .post("/api/Post",{"User_location":this.user_location})
         .then((response) => {
           this.poster = Array.from(response.data);
         })

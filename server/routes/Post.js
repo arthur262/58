@@ -28,6 +28,11 @@ var Poster = mongoose.model('Poster', postSchema)
 
 /* post home page. */
 router.post('/', function (req, res, next) {
+	if(req.body!=undefined){
+		console.log(req.body.User_location);
+	}
+	
+
     Poster.find((err, docs) => {
 	if (!err) {
 		res.send(docs);
