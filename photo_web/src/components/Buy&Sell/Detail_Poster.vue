@@ -56,7 +56,7 @@ export default {
       this.axios
         .post("/api/Post")
         .then((response) => {
-          console.log(response);
+          this.poster = Array.from(response.data);
         })
         .catch(function (error) {
           console.log(error);
