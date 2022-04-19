@@ -1,9 +1,7 @@
 <template>
 <div>
-  
   <QuickGuide/> 
   <Post/>
-  
 </div>
   
 </template>

@@ -50,6 +50,13 @@ router.post('/', function (req, res, next) {
 				}
 			})
 		}
+		}else if(req.body.label!==undefined){
+			Poster.find({label:req.body.label},(err, docs) => {
+				if (!err) {
+					res.send(docs)
+				}
+			})
+
 		}
 	}
 })

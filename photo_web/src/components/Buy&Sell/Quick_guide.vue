@@ -10,7 +10,7 @@
           router
         >
           
-            <el-menu-item index="/Home/PosterList?view=ershouche">
+            <el-menu-item index="/Home/Card">
             <span>二手车</span>
             </el-menu-item>
           
@@ -18,11 +18,11 @@
             <span>家具</span>
             </el-menu-item>
 
-            <el-menu-item index="/Home/PosterList?view=ershouche">
+            <el-menu-item index="/Home/PosterList?view=huazhangping">
             <span>服饰&化妆品</span>
             </el-menu-item>
             
-          <el-menu-item index="/Home/PosterList?view=ershouche">  
+          <el-menu-item index="/Home/PosterList?view=dainqi">  
             <span>电子器件</span>
           </el-menu-item>
           

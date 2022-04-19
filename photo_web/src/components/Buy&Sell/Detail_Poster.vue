@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import Card from "@/components/PostCard.vue";
+import Card from "@/components/Buy&Sell/PostCard.vue";
 export default {
   data() {
     return {

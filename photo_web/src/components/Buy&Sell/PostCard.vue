@@ -28,8 +28,8 @@
                     <p style="font-weight: bold;margin:auto 0.5ch; color:var(--el-color-primary);">
                     {{item.label}}
                     </p>
-                    <p style="color: grey;">
-                    {{item.time}}
+                    <p style="color: grey;" >
+                    {{item.time.substring(0,10)}} {{item.time.substring(15,19)}}
                     </p>
                     
                 </el-col>
@@ -66,7 +66,7 @@
                     {{item.label}}
                     </p>
                     <p style="color: grey;">
-                    {{item.time}}
+                    {{item.time.substring(0,10)}} {{item.time.substring(15,19)}}
                     </p>
                     
                 </el-col>
@@ -110,7 +110,7 @@
                     {{item.label}}
                     </p>
                     <p style="color: grey;">
-                    {{item.time}}
+                    {{item.time.substring(0,10)}} {{item.time.substring(15,19)}}
                     </p>
                     
                 </el-col>
