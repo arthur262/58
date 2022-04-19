@@ -106,10 +106,19 @@ export default {
       if(!is_phone()){
         this.getDom();
       }
-      this.activeIndex=window.location.hash.slice(1);
-      if(this.activeIndex=="/"){
-        this.activeIndex="/Home";
+
+      // 因为存在/home/poster?xxx的情况,所以检测存在一个就直接return
+      this.activeIndex="/Home";
+      const temp1=window.location.hash.split("/");
+      for(var i=0;i<temp1.length;i++){
+        var element=temp1[i];
+        if(element=="Home"){this.activeIndex="/"+element;return}
+        if(element=="School"){this.activeIndex="/"+element;return}
+        if(element=="Rental"){this.activeIndex="/"+element;return}
+        if(element=="Back&Covid"){this.activeIndex="/"+element;return}
       }
+        
+      
     }
     
 

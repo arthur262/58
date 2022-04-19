@@ -10,6 +10,7 @@
       <el-row v-if="getJsonLength(item.picture) < 2">
         
         <el-col :span="8">
+          
           <el-image
             :src="item.picture[0]"
             loading="lazy"
@@ -27,8 +28,8 @@
                     <p style="font-weight: bold;margin:auto 0.5ch; color:var(--el-color-primary);">
                     {{item.label}}
                     </p>
-                    <p style="color: grey;">
-                    {{item.time}}
+                    <p style="color: grey;" >
+                    {{item.time.substring(0,10)}} {{item.time.substring(15,19)}}
                     </p>
                     
                 </el-col>
@@ -38,17 +39,19 @@
             </el-row>
 
             <!-- 限制字符串显示长度为20个char -->
-            <p v-if="item.description.length<40">
-            {{item.description}}
+            <span v-for="child in item.description.slice(0,1)" :key="child">
+            <p v-if="child.length<40">
+            {{child}}
             </p>
             <p v-else>
-              {{item.description.substring(0,40)}}...
+              {{child.substring(0,40)}}...
             </p>
+            </span>
           </div>
         </el-col>
       </el-row>
 
-      <!-- 如果当前的poster是否有4以上的图片 -->
+      <!-- 如果当前的poster是否有1-4的图片 -->
       <div v-else-if="getJsonLength(item.picture) < 4">
         
         <!-- 显示文字 -->
@@ -63,7 +66,7 @@
                     {{item.label}}
                     </p>
                     <p style="color: grey;">
-                    {{item.time}}
+                    {{item.time.substring(0,10)}} {{item.time.substring(15,19)}}
                     </p>
                     
                 </el-col>
@@ -73,12 +76,14 @@
             </el-row>
 
             <!-- 限制字符串显示长度为20个char -->
-            <p v-if="item.description.length<40">
-            {{item.description}}
+            <span v-for="child in item.description.slice(0,1)" :key="child">
+            <p v-if="child.length<40">
+            {{child}}
             </p>
             <p v-else>
-              {{item.description.substring(0,40)}}...
+              {{child.substring(0,40)}}...
             </p>
+            </span>
           </div>
           <div  style="display:flex;">
             <el-image
@@ -105,7 +110,7 @@
                     {{item.label}}
                     </p>
                     <p style="color: grey;">
-                    {{item.time}}
+                    {{item.time.substring(0,10)}} {{item.time.substring(15,19)}}
                     </p>
                     
                 </el-col>
@@ -115,12 +120,14 @@
             </el-row>
 
             <!-- 限制字符串显示长度为20个char -->
-            <p v-if="item.description.length<40">
-            {{item.description}}
+            <span v-for="child in item.description.slice(0,1)" :key="child">
+            <p v-if="child.length<40">
+            {{child}}
             </p>
             <p v-else>
-              {{item.description.substring(0,40)}}...
+              {{child.substring(0,40)}}...
             </p>
+            </span>
           </div>
           <div  style="display:flex;">
             <el-image

@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import HomeView from '../components/HomePage.vue'
+import HomeView from '@/components/HomePage.vue'
 
 const routes = [
   {
@@ -10,34 +10,14 @@ const routes = [
   {
     path: '/Home',
     name: 'Home',
-    component: HomeView,
-    children: [
-      {
-      path: '/',
-      name: 'Home',
-      component: HomeView
-      },{
-        path: '/ershouche',
-        name: 'ershouche',
-        component:"",
-      }
-      ,{
-        path: '/jiaju',
-        name: 'jiaju',
-        component:"",
-      }
-      ,{
-        path: '/huazhuangpin',
-        name: 'huazhuangpin',
-        component:"",
-      }
-      ,{
-        path: '/dianziqijian',
-        name: 'dianziqijian',
-        component:"",
-      }
-    ]
+    component: () => import('@/components/HomePage.vue'),
   },
+  {
+    path: '/Home/Card',
+    name: 'Card',
+    component: () => import('@/components/Buy&Sell/seond_levelPage/B&S_Card.vue'),
+  },
+
   {
     path: '/School',
     name: 'School',
