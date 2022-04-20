@@ -27,12 +27,14 @@
             loading="lazy"
             style="width:25ch;border-radius: 1.5ch;"
           />
+          <div style="padding:1ch;">
           <h4>
           {{ item.Year }}&nbsp;{{item.Model}}
           </h4>
           <p style="color:grey;">{{ item.description[0].substring(0,10) }}...</p>
           <div style="display:flex;float:right;">
           <h3 style="color:var(--el-color-primary)">{{item.Price}}</h3><h4>/Month</h4>
+          </div>
           </div>
         </el-card>
         </div>
@@ -70,14 +72,18 @@ export default {
     return {
       index: "二手车",
       poster: [],
+      fir_five_lease:[],
+      fir_five_sell:[],
+
     };
   },
   mounted: function () {
     this.get_post_list();
+    this.fir_five_lease=this.get_fir_fiv(this.poster,'true');
   },
   methods: {
-    get_post_list() {
-      this.axios
+    async get_post_list() {
+      await this.axios
         .post("/api/Post", { label: this.index })
         .then((response) => {
           this.poster = Array.from(response.data);
@@ -85,6 +91,23 @@ export default {
         .catch(function (error) {
           console.log(error);
         });
+    },
+    /* 通过lease 判断，同时保留第一个在原数组中*/
+    async get_fir_fiv(data,condition){
+      await this.get_post_list();
+      //var cont=0;
+      console.log(data,condition);
+      //var result=[];
+      // for (let index = 0; index < data.length&&cont<=5; index++) {
+      //   if(data[index].Lease==condition &&cont==0){
+      //     result.push(data[index]);
+          
+      //   }
+      //   else if(data[index].Lease==condition){
+      //     result.push(data[index]);
+      //     data.splice(index,1);
+      //   }
+      // }
     },
   },
   components: {},
