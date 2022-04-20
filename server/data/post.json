@@ -1,5 +1,5 @@
 {
-	"posters":[
+	"posters": [
 		{
 			"title": "Curtis Stone Soup Maker 全新，可以做豆浆",
 			"location": "Halifax DownTown",
@@ -9,7 +9,7 @@
 			"description": [
 				"Enjoy comforting soups, healthy smoothies and tasty jams when you use this soup maker from Curtis Stone.",
 				"",
-                "• 1.6-quart jug capacity",
+				"• 1.6-quart jug capacity",
 				"• Six pre-set cooking modes: pulse, puree, chunky, smoothie, jam, saute, keep warm",
 				"• Select your desired cooking mode through the easy-touch control panel",
 				"• Four-layer Dura-Pan non-stick coated jug for easy cleaning (four times the strength of unreinforced non-stick surfaces)",
@@ -30,11 +30,32 @@
 			"label": "二手出售",
 			"time": "2022-04-17 21:11",
 			"phone": 9024108972,
-			"description": ["复方黄连素片和藿香正气颗粒,6月和8月分别到期,全新未拆,免费自取,短信联系"],
+			"description": [
+				"复方黄连素片和藿香正气颗粒,6月和8月分别到期,全新未拆,免费自取,短信联系"
+			],
 			"picture": [
 				"http://arthur1.oss-us-west-1.aliyuncs.com/self-web/image/%E5%9B%BE%E7%89%87.png",
-                "http://arthur1.oss-us-west-1.aliyuncs.com/self-web/image/%E5%9B%BE%E7%89%87.png"
+				"http://arthur1.oss-us-west-1.aliyuncs.com/self-web/image/%E5%9B%BE%E7%89%87.png"
+			]
+		},
+
+		{
+			"title": "2017卡罗拉",
+			"location": "Halifax DownTown",
+			"label": "二手车",
+			"Model":"卡罗拉",
+			"Year":2017,
+			"Lease":"NO",
+			"Price":18990,
+			"time": "2022-04-17 21:11",
+			"phone": 9024108972,
+			"description": [
+				"2017卡罗拉,目前只有一辆手动档的卡罗拉二手车,9.6万公里,无事故,带雪胎,18990"
+			],
+			"picture": [
+				"http://arthur1.oss-us-west-1.aliyuncs.com/self-web/image/%E5%9B%BE%E7%89%87.png",
+				"http://arthur1.oss-us-west-1.aliyuncs.com/self-web/image/%E5%9B%BE%E7%89%87.png"
 			]
 		}
 	]
-	}
+}
