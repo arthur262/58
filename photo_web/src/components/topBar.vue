@@ -20,7 +20,7 @@
     <el-row>
     <el-col :span="25">
     <el-link href="#" 
-      target="_blank"
+      target=""
       style="color: white; font-size:1.5vw"
       >哈法留学万事屋</el-link> 
 
@@ -134,7 +134,7 @@ export default {
 
 
 .newSubmit{
-  position: absolute;
+  position: relative;
   left: 84.55%;
   right: 12.67%;
   top: 20.78%;

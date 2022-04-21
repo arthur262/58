@@ -1,5 +1,6 @@
 <template>
 <div>
+  <Back/>
   <Top/>
   <div style="width:fit-content;
   min-height:100vh;
@@ -16,11 +17,13 @@
 <script>
 
 import Top from '@/components/topBar.vue';
+import Back from '@/components/backGround.vue';
 
 export default {
   name: 'App',
   components: {
-   Top
+   Top,
+   Back
 
   },
   data() {
