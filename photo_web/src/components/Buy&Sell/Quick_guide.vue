@@ -19,7 +19,7 @@
             </el-menu-item>
 
             <el-menu-item index="/Home/PosterList?view=huazhangping">
-            <span>服饰&化妆品</span>
+            <span>服饰&药妆</span>
             </el-menu-item>
             
           <el-menu-item index="/Home/PosterList?view=dainqi">  
@@ -66,7 +66,7 @@ export default {
       this.activeIndex = keyPath;
     },
     testwidth() {
-      if (!is_phone()) {
+      if (is_phone()) {
         this.getDom();
       }
     },

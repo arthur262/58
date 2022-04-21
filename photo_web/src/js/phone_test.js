@@ -10,7 +10,7 @@ function is_phone(){
              break;
            }
          }
-         return flag;
+         return !flag;
     }
 
 export {
