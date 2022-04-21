@@ -8,10 +8,10 @@ const connectionParams = {
 	useNewUrlParser: true,
 	useUnifiedTopology: true
 }
-main().catch(err => console.log(err));
+main().catch(err => console.log(err))
 
 async function main() {
-  await mongoose.connect(url,connectionParams);
+	await mongoose.connect(url, connectionParams)
 }
 
 var postSchema = new mongoose.Schema({
@@ -19,12 +19,10 @@ var postSchema = new mongoose.Schema({
 	location: String,
 	label: String,
 	time: Date,
-	phone:Number,
+	phone: Number,
 	description: Array,
-	picture:Array,
+	picture: Array
 })
-
-
 
 // 查询mongodb里面的所有数据
 var Poster = mongoose.model('poster', postSchema)
@@ -33,32 +31,47 @@ var Poster = mongoose.model('poster', postSchema)
 router.post('/', function (req, res, next) {
 	if (req.body != undefined) {
 		//当从homepage 发送的时候
-		if (req.body.User_location != undefined) {
-			if(req.body.User_location=="Whole Halifax"){
-				Poster.find((err, docs) => {
-				
+		if (req.body.Current_page == 'Home') {
+			if (req.body.User_location == 'Whole Halifax') {
+				Poster.find( (err, docs) => {
+					if (!err) {
+						res.send(docs)
+					}
+				}).sort({"time": 1}).limit(10);
+			}else {
+			Poster.find({ location: req.body.User_location }, (err, docs) => {
 				if (!err) {
 					res.send(docs)
 				}
-			})
-			}
-			else{
-			Poster.find({location:req.body.User_location},(err, docs) => {
-			
-				if (!err) {
-					res.send(docs)
-				}
-			})
+			}).sort({"time": 1}).limit(10);
 		}
-		}else if(req.body.label!==undefined){
-			Poster.find({label:req.body.label},(err, docs) => {
+		}
+		else if (req.body.Current_page == 'Home/Card') {
+			if (req.body.User_location == 'Whole Halifax') {
+				Poster.find( (err, docs) => {
+					if (!err) {
+						res.send(docs)
+					}
+				}).sort({"time": 1}).limit(10);
+			}else {
+			Poster.find({ location: req.body.User_location }, (err, docs) => {
 				if (!err) {
 					res.send(docs)
 				}
+			}).sort({"time": 1}).limit(10);
+		}
+		}
+		//为了 
+		else if (req.body.Current_page=="Poster"){
+			Poster.find({ "_id": req.body.user_id }, (err, docs) => {
+				if (!err) {
+					res.send(docs);
+				}
 			})
-
+			
 		}
 	}
 })
+
 
 module.exports = router

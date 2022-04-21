@@ -1,5 +1,5 @@
 <template>
-  <div style="width: 90ch; margin: 5ch auto">
+  <div style="max-width: 90ch; margin: 5ch auto">
     <el-row class="block-col-2">
       <el-col :span="18" style="display: flex">
         <h3 style="margin-left: 4%">Your Location:</h3>
@@ -55,7 +55,7 @@ export default {
     },
     get_post_list() {
       this.axios
-        .post("/api/Post",{"User_location":this.user_location})
+        .post("/api/Post",{"User_location":this.user_location,"Current_page":"Home"})
         .then((response) => {
           this.poster = Array.from(response.data);
         })

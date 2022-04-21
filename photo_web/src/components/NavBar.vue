@@ -103,7 +103,7 @@ export default {
     },
     testwidth(){
       
-      if(!is_phone()){
+      if(is_phone()){
         this.getDom();
       }
 

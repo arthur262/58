@@ -55,7 +55,8 @@
       <div v-else-if="getJsonLength(item.picture) < 4">
         
         <!-- 显示文字 -->
-        
+        <form method="get" action="/Post_detail">
+        <input type="text" value='{{item._id}}' hidden > 
           <div class="card_detail">
             <h3 style="font-weight: bold; margin:0.5ch 0.5ch 0.5ch 0ch">
               {{ item.title }}
@@ -93,6 +94,7 @@
             style="border-radius: 1ch;margin:0.5ch;width:20ch;height:auto;"
           />
           </div>
+        </form>
 
       </div>
       <!-- 如果当前的poster图片超出范围 -->
@@ -167,6 +169,7 @@ export default {
 .poster_box {
   border-radius: 1.5ch;
   margin: 1.5ch 1ch;
+  width:80ch;
 }
 .card_detail {
   padding: 0 2ch;
