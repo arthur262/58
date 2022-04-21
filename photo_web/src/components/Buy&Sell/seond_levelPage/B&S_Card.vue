@@ -101,7 +101,7 @@ export default {
      get_post_list() {
       return new Promise((resolve, reject) => {
         this.axios
-          .post("/api/Post", { label: this.index })
+          .post("/api/Post", { label: this.index},{Current_page: "Home/Card"})
           .then((response) => {
             this.poster = Array.from(response.data);
             resolve();

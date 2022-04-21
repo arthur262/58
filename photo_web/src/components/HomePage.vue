@@ -1,34 +1,33 @@
 <template>
-<div>
-  <QuickGuide/> 
-  <Post/>
-  <div style="margin:0 auto;width:fit-content;">
-  <el-pagination background layout="prev, pager, next" :total="cout" />
+  <div style="max-width: 95%; width: fit-content; margin: 0 auto">
+    <div style="max-width: 95%; width: fit-content; margin: 0 auto">
+      <QuickGuide />
+    </div>
+    <div style="max-width: 95%; width: fit-content; margin: 0 auto">
+      <Post />
+    </div>
+    <div style="margin: 0 auto; width: inheritance">
+      <el-pagination background layout="prev, pager, next" :total="cout" />
+    </div>
   </div>
-</div>
-  
 </template>
 
 <script>
-
-import QuickGuide from '@/components/Buy&Sell/Quick_guide.vue';
-import Post from '@/components/Buy&Sell/Detail_Poster.vue';
-
+import QuickGuide from "@/components/Buy&Sell/Quick_guide.vue";
+import Post from "@/components/Buy&Sell/Detail_Poster.vue";
 
 export default {
-name: 'HomePage',
+  name: "HomePage",
   components: {
-   QuickGuide,
-   Post
+    QuickGuide,
+    Post,
   },
-  data(){
+  data() {
     return {
-      cout:100,
-    }
-  }
-}
+      cout: 100,
+    };
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

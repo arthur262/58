@@ -1,13 +1,9 @@
 <template>
 <div>
   <Top/>
-  <div style="width:fit-content;
+  <div style="max-width:100%;
   min-height:100vh;
   margin:0 auto;">
-  <div style="margin:0 auto; width:fit-content;">
-  
-  
-  </div>
    <router-view />
   </div>
 </div>

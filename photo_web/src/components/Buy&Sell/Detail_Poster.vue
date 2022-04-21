@@ -1,5 +1,5 @@
 <template>
-  <div style="width: 90ch; margin: 5ch auto">
+  <div style="max-width: 90ch; margin: 5ch auto">
     <el-row class="block-col-2">
       <el-col :span="18" style="display: flex">
         <h3 style="margin-left: 4%">Your Location:</h3>

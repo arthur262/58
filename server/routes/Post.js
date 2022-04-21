@@ -43,8 +43,23 @@ router.post('/', function (req, res, next) {
 				if (!err) {
 					res.send(docs)
 				}
-			})
+			}).sort({"time": 1}).limit(10);
 		}
+		}
+		else if (req.body.Current_page == 'Home/Card') {
+			if (req.body.User_location == 'Whole Halifax') {
+				Poster.find( (err, docs) => {
+					if (!err) {
+						res.send(docs)
+					}
+				}).sort({"time": 1}).limit(10);
+			}else {
+			Poster.find({ location: req.body.User_location }, (err, docs) => {
+				if (!err) {
+					res.send(docs)
+				}
+			}).sort({"time": 1}).limit(10);
+
 		} 
 	}
 })

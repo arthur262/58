@@ -78,7 +78,8 @@ export default {
 .container {
   padding: 1.5ch;
   border-radius: 1.5ch;
-  min-width: 100ch;
+  width: 100ch;
+  max-width: 90%;
   margin: 0 1ch;
 }
 .el-carousel__item h3 {
