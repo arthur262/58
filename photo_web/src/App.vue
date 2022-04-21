@@ -1,8 +1,12 @@
 <template>
 <div>
-  <Back/>
+
+<Top/>
+  <div style="width:fit-content;
+  
   <Top/>
   <div style="max-width:100%;
+
   min-height:100vh;
   margin:0 auto;">
    <router-view />
@@ -13,13 +17,12 @@
 <script>
 
 import Top from '@/components/topBar.vue';
-import Back from '@/components/backGround.vue';
+
 
 export default {
   name: 'App',
   components: {
    Top,
-   Back
 
   },
   data() {
