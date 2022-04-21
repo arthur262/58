@@ -59,9 +59,19 @@ router.post('/', function (req, res, next) {
 					res.send(docs)
 				}
 			}).sort({"time": 1}).limit(10);
-
-		} 
+		}
+		}
+		//为了 
+		else if (req.body.Current_page=="Poster"){
+			Poster.find({ "_id": req.body.user_id }, (err, docs) => {
+				if (!err) {
+					res.send(docs);
+				}
+			})
+			
+		}
 	}
 })
+
 
 module.exports = router
