@@ -169,7 +169,8 @@ export default {
 .poster_box {
   border-radius: 1.5ch;
   margin: 1.5ch 1ch;
-  width:80ch;
+  max-width:90%;
+  min-width: 75ch;
 }
 .card_detail {
   padding: 0 2ch;
