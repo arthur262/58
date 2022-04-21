@@ -25,6 +25,10 @@
           <el-menu-item index="/Home/PosterList?view=dainqi">  
             <span>电子器件</span>
           </el-menu-item>
+
+          <el-menu-item index="/Home/PosterList?view=dainqi">  
+            <span>其他分类</span>
+          </el-menu-item>
           
           
         </el-menu>
@@ -66,7 +70,7 @@ export default {
       this.activeIndex = keyPath;
     },
     testwidth() {
-      if (is_phone()) {
+      if (!is_phone()) {
         this.getDom();
       }
     },
@@ -78,9 +82,9 @@ export default {
 .container {
   padding: 1.5ch;
   border-radius: 1.5ch;
-  width: 100ch;
-  max-width: 90%;
-  margin: 0 1ch;
+  min-width: 100ch;
+  margin: 0 1ch;;
+  background-color: #ffffff;
 }
 .el-carousel__item h3 {
   color: #475669;
