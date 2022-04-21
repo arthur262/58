@@ -64,7 +64,7 @@
               </p>
               <div style="display: flex; float: right">
                 <h3 style="color: var(--el-color-primary)">{{ item.Price }}</h3>
-                <h4>/Month</h4>
+                <h4>&nbsp; Cad</h4>
               </div>
               </div>
             </div>
@@ -76,7 +76,7 @@
   </div>
 </template>
 
-<script>
+<script >
 import Card from "@/components/Buy&Sell/PostCard.vue";
 export default {
   data() {

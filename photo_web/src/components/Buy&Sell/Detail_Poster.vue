@@ -55,7 +55,7 @@ export default {
     },
     get_post_list() {
       this.axios
-        .post("/api/Post",{"User_location":this.user_location})
+        .post("/api/Post",{"User_location":this.user_location,"Current_page":"Home"})
         .then((response) => {
           this.poster = Array.from(response.data);
         })

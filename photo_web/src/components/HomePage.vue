@@ -2,6 +2,9 @@
 <div>
   <QuickGuide/> 
   <Post/>
+  <div style="margin:0 auto;width:fit-content;">
+  <el-pagination background layout="prev, pager, next" :total="cout" />
+  </div>
 </div>
   
 </template>
@@ -18,6 +21,11 @@ name: 'HomePage',
    QuickGuide,
    Post
   },
+  data(){
+    return {
+      cout:100,
+    }
+  }
 }
 </script>
 
