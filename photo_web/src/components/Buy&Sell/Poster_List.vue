@@ -15,7 +15,6 @@
     <Card :msg="poster"/>
       </el-col>
     </el-row>
-
      </div>
 </template>
 
