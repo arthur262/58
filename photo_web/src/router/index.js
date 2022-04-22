@@ -20,7 +20,7 @@ const routes = [
   {
     path: '/Post_detail',
     name: 'Post',
-    component: () => import('@/components/One_Post.vue'),
+    component: () => import('@/components/System_Component/One_Post.vue'),
   }
 ]
 

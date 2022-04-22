@@ -29,12 +29,14 @@
   </div>
   
   <div class = "searchBar">
-     <el-input
-        
-        class="w-50 m-2"
-        size="small"
-        placeholder="搜索"
-        />
+     
+    <el-autocomplete
+    v-model="state"
+    :fetch-suggestions="querySearchAsync"
+    placeholder="搜索"
+    style="width:100%;margin:auto 0;"
+    @select="handleSelect"
+  />
   </div>
    
   <div class = "newSubmit">
@@ -46,14 +48,14 @@
 <script>
 /* eslint-disable */
 //https://blog.csdn.net/ZMM_Devil/article/details/103871602
-import {is_phone}from "@/js/phone_test.js"
 import { ref } from "vue";
 export default {
     data() {
       return {
         fits: 'contain',
         url:'http://arthur1.oss-us-west-1.aliyuncs.com/self-web/image/%E5%9B%BE%E7%89%87.png',
-        herf:'#'
+        herf:'#',
+        state:"",
       }
     },
     setup: function (){
@@ -64,12 +66,19 @@ export default {
     };  
     return { nav_box, getDom};
   },
-  testwidth(){
-      
-      if(is_phone()){
-        this.getDom();
-      }
+  methods: {
+    querySearchAsync(queryString, cb) {
+        queryString? console.log(queryString): null;
+        clearTimeout(this.timeout);
+        this.timeout = setTimeout(() => {
+          cb([]);
+        }, 1000 * Math.random());
+      },
+      handleSelect(item) {
+
+      },
   }
+  
 }
 </script>
 

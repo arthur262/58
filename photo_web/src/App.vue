@@ -13,7 +13,7 @@
 
 <script>
 
-import Top from '@/components/topBar.vue';
+import Top from '@/components/System_Component/topBar.vue';
 
 
 export default {

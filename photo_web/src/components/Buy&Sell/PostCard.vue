@@ -8,7 +8,9 @@
     >
       <!-- 如果当前的poster只有一张的图片 -->
       <el-row v-if="getJsonLength(item.picture) < 2">
-        
+        <form method="get" action="/Post_detail">
+          <input type="hidden" name="post" :value='item._id'>
+          <input type="submit" value="submit" class="submit_btn ">
         <el-col :span="8">
           
           <el-image
@@ -49,16 +51,18 @@
             </span>
           </div>
         </el-col>
+        </form>
       </el-row>
+
 
       <!-- 如果当前的poster是否有1-4的图片 -->
       <div v-else-if="getJsonLength(item.picture) < 4">
         
         <!-- 显示文字 -->
         <form method="get" action="/Post_detail">
-          <input type="text" name="xxx" :value='item._id'>
-          <input type="submit" value="submit">
-        </form>
+          <input type="hidden" name="post" :value='item._id'>
+          <input type="submit" value="submit" class="submit_btn ">
+        
           <div class="card_detail">
             <h3 style="font-weight: bold; margin:0.5ch 0.5ch 0.5ch 0ch">
               {{ item.title }}
@@ -96,6 +100,7 @@
             style="border-radius: 1ch;margin:0.5ch;width:20ch;height:auto;"
           />
           </div>
+          </form>
         
 
       </div>
@@ -103,7 +108,9 @@
       <div v-else-if="getJsonLength(item.picture)>= 4">
         
         <!-- 显示文字 -->
-        
+        <form method="get" action="/Post_detail">
+          <input type="hidden" name="post" :value='item._id'>
+          <input type="submit" value="submit" class="submit_btn ">
           <div class="card_detail">
             <h3 style="font-weight: bold; margin:0.5ch 0.5ch 0.5ch 0ch">
               {{ item.title }}
@@ -142,7 +149,7 @@
             style="border-radius: 1ch;margin:0.5ch;width:20ch;height:auto;"
           />
           </div>
-
+          </form>
       </div>
     </el-card>
   
@@ -181,11 +188,18 @@ export default {
 .poster_box {
   border-radius: 1.5ch;
   margin: 1.5ch 1ch;
-  max-width:90%;
-  min-width: 75ch;
+  width: 80ch;
 }
 .card_detail {
   padding: 0 2ch;
   
+}
+.submit_btn{
+  position: absolute;
+  max-width:90%;
+  min-width: 85ch;
+  height:35ch;
+  opacity: 0;
+  z-index:10;
 }
 </style>
