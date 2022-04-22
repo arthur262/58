@@ -1,8 +1,8 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
   {
-    path: '/',
+    path: '',
     name: 'standard',
     redirect:'/Home'
   },
@@ -20,12 +20,12 @@ const routes = [
   {
     path: '/Post_detail',
     name: 'Post',
-    component: () => import('@/components/One_Post.vue'),
+    component: () => import('@/components/System_Component/One_Post.vue'),
   }
 ]
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes
 })
 

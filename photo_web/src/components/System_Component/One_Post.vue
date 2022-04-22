@@ -138,12 +138,14 @@
 <script>
 export default {
   mounted: function () {
+    this.get();
     this.get_post_detail();
+    
   },
   data() {
     return {
       
-      id: "626068b7f08e719bab31f8bf",
+      id: "",
       poster: [],
     };
   },
@@ -152,7 +154,8 @@ export default {
       var url = window.document.location.href.toString();
       var u = url.split("?");
       if (typeof u[1] == "string") {
-        return u[1];
+        this.id=u[1].split("=")[1];
+        console.log(this.id);
       } else {
         return {};
       }

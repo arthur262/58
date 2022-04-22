@@ -15,12 +15,11 @@
     <Card :msg="poster"/>
       </el-col>
     </el-row>
-
      </div>
 </template>
 
 <script>
-import "../NavBar.vue";
+import "../System_Component/NavBar.vue";
 import Card from "@/components/Buy&Sell/PostCard.vue";
 
 export default {

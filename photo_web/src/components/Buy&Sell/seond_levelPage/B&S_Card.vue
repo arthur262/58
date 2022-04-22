@@ -21,6 +21,9 @@
             v-for="item in fir_five_lease"
             :key="item.title"
           >
+          <form method="get" action="/Post_detail">
+          <input type="hidden" name="post" :value='item._id'>
+          <input type="submit" value="submit" class="submit_btn ">
             <el-image
               :src="item.picture[0]"
               loading="lazy"
@@ -38,7 +41,9 @@
                 <h4>/Month</h4>
               </div>
               </div>
+              </form>
             </div>
+            
             </div>
           </el-scrollbar>
         
@@ -51,6 +56,9 @@
             v-for="item in fir_five_sell"
             :key="item.title"
           >
+          <form method="get" action="/Post_detail">
+          <input type="hidden" name="post" :value='item._id'>
+          <input type="submit" value="submit" class="submit_btn ">
             <el-image
               :src="item.picture[0]"
               loading="lazy"
@@ -67,6 +75,7 @@
                 <h4>&nbsp; Cad</h4>
               </div>
               </div>
+              </form>
             </div>
             </div>
           </el-scrollbar>
@@ -101,9 +110,10 @@ export default {
      get_post_list() {
       return new Promise((resolve, reject) => {
         this.axios
-          .post("/api/Post", { label: this.index},{Current_page: "Home/Card"})
+          .post("/api/Post", { "label": this.index,"Current_page": "Card","User_location":"Whole Halifax"})
           .then((response) => {
             this.poster = Array.from(response.data);
+            
             resolve();
           })
           .catch(function (error) {

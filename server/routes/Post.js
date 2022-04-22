@@ -46,22 +46,24 @@ router.post('/', function (req, res, next) {
 			}).sort({"time": 1}).limit(10);
 		}
 		}
-		else if (req.body.Current_page == 'Home/Card') {
+		else if (req.body.Current_page == 'Card') {
+			
 			if (req.body.User_location == 'Whole Halifax') {
-				Poster.find( (err, docs) => {
+				Poster.find({label: req.body.label}, (err, docs) => {
+					
 					if (!err) {
 						res.send(docs)
 					}
 				}).sort({"time": 1}).limit(10);
 			}else {
-			Poster.find({ location: req.body.User_location }, (err, docs) => {
-				if (!err) {
-					res.send(docs)
-				}
-			}).sort({"time": 1}).limit(10);
+			Poster.find({label: req.body.label}, (err, docs) => {
+					if (!err) {
+						res.send(docs)
+					}
+				}).sort({"time": 1}).limit(10);
 		}
 		}
-		//为了 
+		//为了 显示每一个post的单独界面
 		else if (req.body.Current_page=="Poster"){
 			Poster.find({ "_id": req.body.user_id }, (err, docs) => {
 				if (!err) {
