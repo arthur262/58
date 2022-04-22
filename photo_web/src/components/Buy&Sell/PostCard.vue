@@ -56,7 +56,9 @@
         
         <!-- 显示文字 -->
         <form method="get" action="/Post_detail">
-        <input type="text" value='{{item._id}}' hidden > 
+          <input type="text" name="xxx" :value='item._id'>
+          <input type="submit" value="submit">
+        </form>
           <div class="card_detail">
             <h3 style="font-weight: bold; margin:0.5ch 0.5ch 0.5ch 0ch">
               {{ item.title }}
@@ -94,7 +96,7 @@
             style="border-radius: 1ch;margin:0.5ch;width:20ch;height:auto;"
           />
           </div>
-        </form>
+        
 
       </div>
       <!-- 如果当前的poster图片超出范围 -->
@@ -160,7 +162,17 @@ export default {
       }
       return jsonLength;
     },
+    get_post(item) {
+      var url=window.location.href;
+      console.log(url);
+      console.log(item);
+
+    }
+
   },
+  mounted: function () {
+    
+  }
 
 }
 </script>
