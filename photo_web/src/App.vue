@@ -59,6 +59,15 @@ export default {
 .wholeBack{
   background:linear-gradient(70deg, rgb(235, 253, 225),rgb(255, 240, 206));
 }
+.router-link-active {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.9);
+}
+a {
+  text-decoration: none;
+  color:rgba(0, 0, 0, 0.7);
+}
+
 :root{
   --el-color-primary:#FFB52E !important;
 }
