@@ -21,6 +21,11 @@ const routes = [
     path: '/Post_detail',
     name: 'Post',
     component: () => import('@/components/System_Component/One_Post.vue'),
+  },
+  {
+    path: '/Submit',
+    name: 'Submit',
+    component: () => import('@/components/System_Component/Sub_Post.vue'),
   }
 ]
 

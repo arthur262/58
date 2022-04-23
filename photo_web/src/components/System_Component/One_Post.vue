@@ -1,5 +1,6 @@
 <template>
-  <div style="max-width: 95%; width: fit-content; margin: 0 auto; padding: 2ch">
+  <div style="max-width: 100ch;
+  min-width: 90%; margin: 0 auto; padding: 2ch">
     <el-page-header
           
           @back="() => $router.back()"
@@ -15,7 +16,8 @@
         poster.label == 'Other'
       "
     >
-      <el-card class="box-card" style="width: 80ch; border-radius: 1.5ch">
+      <el-card class="box-card" style="max-width: 100ch;
+  min-width: 90%; border-radius: 1.5ch">
         <h2>{{ poster.title }}</h2>
         <el-row>
           <el-col :span="16">
@@ -51,7 +53,8 @@
       </el-card>
       <el-card
         class="box-card"
-        style="width: 80ch; border-radius: 1.5ch; margin: 2ch 0"
+        style="max-width: 100ch;
+  min-width: 90%; border-radius: 1.5ch; margin: 2ch 0"
       >
         <h3>描述</h3>
         <h4 v-for="item in poster.description" :key="item" style="margin: 0">
@@ -61,7 +64,8 @@
     </div>
     <!-- 显示汽车类目 -->
     <div v-else-if="poster.label == '二手车'">
-      <el-card class="box-card" style="width: 80ch; border-radius: 1.5ch">
+      <el-card class="box-card" style="max-width: 100ch;
+  min-width: 90%; border-radius: 1.5ch">
         <h2>{{ poster.title }}</h2>
         <el-row>
           <el-col :span="16">
@@ -124,7 +128,8 @@
       </el-card>
       <el-card
         class="box-card"
-        style="width: 80ch; border-radius: 1.5ch; margin: 2ch 0"
+        style="max-width: 100ch;
+  min-width: 90%; border-radius: 1.5ch; margin: 2ch 0"
       >
         <h3>描述</h3>
         <h4 v-for="item in poster.description" :key="item" style="margin: 0">

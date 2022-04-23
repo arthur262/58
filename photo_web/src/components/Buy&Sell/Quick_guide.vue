@@ -82,7 +82,8 @@ export default {
 .container {
   padding: 1.5ch;
   border-radius: 1.5ch;
-  min-width: 100ch;
+  max-width: 100ch;
+  min-width: 90%;
   margin: 0 1ch;;
   background-color: #ffffff;
 }

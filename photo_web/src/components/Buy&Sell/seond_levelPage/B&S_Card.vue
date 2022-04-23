@@ -169,7 +169,8 @@ export default {
 
 <style lang="less" scoped>
 .container {
-  width: 110ch;
+  max-width: 100ch;
+  min-width: 90%;
   margin: 0 auto;
 }
 .side_list {
@@ -197,4 +198,12 @@ export default {
   overflow-y: hidden;
   
 }
+.submit_btn{
+  position: absolute;
+  min-width: 40%;
+  height:45ch;
+  opacity: 0;
+  z-index:10;
+}
+
 </style>
