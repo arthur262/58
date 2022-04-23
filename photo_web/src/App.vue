@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class = "wholeBack">
 
 <Top/>
   <div style="width:fit-content;
@@ -8,7 +8,25 @@
   margin:0 auto;">
    <router-view />
   </div>
+
+  <el-row class = "foot">
+    <el-col :span ="10"></el-col>
+    
+  <footer>
+    
+      <el-link href="#" icon = "el-icon-s-home" style="color:#d3dcff;font-size:1vw">主页</el-link>
+    
+       &nbsp; &nbsp; &nbsp;
+    
+      <el-link href="" target="_blank" icon = "el-icon-phone" style="color:#fff2db;font-size:1vw">联系我们</el-link>
+    
+    
+  </footer>
+  </el-row>
+  
 </div>
+
+
 </template>
 
 <script>
@@ -38,6 +56,9 @@ export default {
 </script>
 
 <style >
+.wholeBack{
+  background:linear-gradient(70deg, rgb(235, 253, 225),rgb(255, 240, 206));
+}
 :root{
   --el-color-primary:#FFB52E !important;
 }
@@ -49,6 +70,15 @@ export default {
   margin:0;
   padding:0;
 
+}
+.foot{
+  display:inline-block;
+  vertical-align:middle;
+  position: relative;
+  line-height: 70px;
+  height: 70px;
+  width: 100%;
+  background: rgba(136, 136, 136, 0.75);
 }
 
 

@@ -1,19 +1,20 @@
 /* eslint-disable vue/multi-word-component-names */
 <template>
   <div class="TOP">
+    <div id = "element">
+
     <el-row>
       <el-col :span="2"> </el-col>
-      <el-col :span="4">
-        <!-- <el-image
-
-        :src="url"
-        ></el-image> -->
+      <el-col :span="3">
+        <el-image
+         :src="url"
+        style="width: 31%; height: auto;"
+        ></el-image>
       </el-col>
 
       <el-col :span="4">
         <el-link href="#" target="" style="color: white; font-size: 1.5vw"
-          >哈法留学万事屋</el-link
-        >
+          >哈法留学万事屋</el-link>
       </el-col>
 
       <el-col :span="8">
@@ -28,11 +29,12 @@
 
       <el-col :span="4">
         <el-button type="text" class="fb">
-          <el-link href="/Submit"> 发布</el-link></el-button
+          <el-link href="/Submit" style="font-size: 1vw; margin-left: 145px; color: yellow;"> 发布</el-link></el-button
         >
       </el-col>
       <el-col :span="2"> </el-col>
     </el-row>
+    </div>
   </div>
 </template>
 
@@ -75,5 +77,14 @@ export default {
   height: 70px;
   width: 100%;
   background: rgba(0, 0, 0, 0.75);
+  
+  
+}
+#element{
+    
+    position: relative;
+    top: 50%;
+    transform: translate(0, -50%);
+    margin: auto;
 }
 </style>
