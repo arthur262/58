@@ -184,11 +184,12 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less" scoped>
 .poster_box {
   border-radius: 1.5ch;
   margin: 1.5ch 1ch;
-  width: 80ch;
+  max-width: 100ch;
+  min-width: 90%;
 }
 .card_detail {
   padding: 0 2ch;
@@ -196,8 +197,8 @@ export default {
 }
 .submit_btn{
   position: absolute;
-  max-width:90%;
-  min-width: 85ch;
+  max-width: 100ch;
+  min-width: 80%;
   height:35ch;
   opacity: 0;
   z-index:10;

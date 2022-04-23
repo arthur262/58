@@ -1,5 +1,6 @@
 <template>
-  <div style="max-width: 95%; width: fit-content;min-width:85ch; margin: 0 auto">
+  <div style="max-width: 100ch;
+  min-width: 90%; margin: 0 auto">
     <QuickGuide />
 
     <Post />
