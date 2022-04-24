@@ -3,7 +3,7 @@
       shadow="hover"
       class="box-card poster_box"
       v-for="item in msg"
-      :key="item.title"
+      :key="item._id"
       style="border-radius: 1.5ch;"
     >
       <!-- 如果当前的poster只有一张的图片 -->
