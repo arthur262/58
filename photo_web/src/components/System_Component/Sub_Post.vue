@@ -96,8 +96,8 @@
           />
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="onSubmit">Create</el-button>
-          <el-button>Cancel</el-button>
+          <el-button type="primary" @click="onSubmit">上传</el-button>
+          <el-button @click="clearAll">清空</el-button>
         </el-form-item>
       </el-form>
     </el-card>
@@ -132,6 +132,11 @@ export default {
     onSubmit() {
       console.log(this.form);
     },
+    clearAll(){
+      for (var item in this.form) {
+        delete this.form[item];
+      }
+    }
   },
 };
 </script>
