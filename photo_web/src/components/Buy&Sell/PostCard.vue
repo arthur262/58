@@ -3,14 +3,12 @@
       shadow="hover"
       class="box-card poster_box"
       v-for="item in msg"
-      :key="item.title"
+      :key="item._id"
       style="border-radius: 1.5ch;"
     >
       <!-- 如果当前的poster只有一张的图片 -->
       <el-row v-if="getJsonLength(item.picture) < 2">
-        <form method="get" action="/Post_detail">
-          <input type="hidden" name="post" :value='item._id'>
-          <input type="submit" value="submit" class="submit_btn ">
+        <router-link :to="'/Post_detail?post='+item._id">
         <el-col :span="8">
           
           <el-image
@@ -51,7 +49,7 @@
             </span>
           </div>
         </el-col>
-        </form>
+        </router-link>
       </el-row>
 
 
@@ -59,10 +57,8 @@
       <div v-else-if="getJsonLength(item.picture) < 4">
         
         <!-- 显示文字 -->
-        <form method="get" action="/Post_detail">
-          <input type="hidden" name="post" :value='item._id'>
-          <input type="submit" value="submit" class="submit_btn ">
-        
+       
+        <router-link :to="'/Post_detail?post='+item._id">
           <div class="card_detail">
             <h3 style="font-weight: bold; margin:0.5ch 0.5ch 0.5ch 0ch">
               {{ item.title }}
@@ -100,7 +96,7 @@
             style="border-radius: 1ch;margin:0.5ch;width:20ch;height:auto;"
           />
           </div>
-          </form>
+          </router-link>
         
 
       </div>
@@ -108,9 +104,7 @@
       <div v-else-if="getJsonLength(item.picture)>= 4">
         
         <!-- 显示文字 -->
-        <form method="get" action="/Post_detail">
-          <input type="hidden" name="post" :value='item._id'>
-          <input type="submit" value="submit" class="submit_btn ">
+       <router-link :to="'/Post_detail?post='+item._id">
           <div class="card_detail">
             <h3 style="font-weight: bold; margin:0.5ch 0.5ch 0.5ch 0ch">
               {{ item.title }}
@@ -149,7 +143,7 @@
             style="border-radius: 1ch;margin:0.5ch;width:20ch;height:auto;"
           />
           </div>
-          </form>
+          </router-link>
       </div>
     </el-card>
   
@@ -195,12 +189,5 @@ export default {
   padding: 0 2ch;
   
 }
-.submit_btn{
-  position: absolute;
-  max-width: 100ch;
-  min-width: 80%;
-  height:35ch;
-  opacity: 0;
-  z-index:10;
-}
+
 </style>

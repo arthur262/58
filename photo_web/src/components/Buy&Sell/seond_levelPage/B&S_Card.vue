@@ -21,9 +21,7 @@
             v-for="item in fir_five_lease"
             :key="item.title"
           >
-          <form method="get" action="/Post_detail">
-          <input type="hidden" name="post" :value='item._id'>
-          <input type="submit" value="submit" class="submit_btn ">
+          <router-link :to="'/Post_detail?post='+item._id">
             <el-image
               :src="item.picture[0]"
               loading="lazy"
@@ -41,7 +39,7 @@
                 <h4>/Month</h4>
               </div>
               </div>
-              </form>
+              </router-link>
             </div>
             
             </div>
@@ -56,9 +54,7 @@
             v-for="item in fir_five_sell"
             :key="item.title"
           >
-          <form method="get" action="/Post_detail">
-          <input type="hidden" name="post" :value='item._id'>
-          <input type="submit" value="submit" class="submit_btn ">
+          <router-link :to="'/Post_detail?post='+item._id">
             <el-image
               :src="item.picture[0]"
               loading="lazy"
@@ -75,7 +71,7 @@
                 <h4>&nbsp; Cad</h4>
               </div>
               </div>
-              </form>
+              </router-link>
             </div>
             </div>
           </el-scrollbar>
