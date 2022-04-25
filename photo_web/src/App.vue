@@ -14,11 +14,13 @@
     
   <footer>
     
-      <el-link href="#" icon = "el-icon-s-home" style="color:#d3dcff;font-size:1vw">主页</el-link>
+      <el-link href="/" icon = "el-icon-s-home" style="color:#d3dcff;font-size:1.2vw">主页</el-link>
     
        &nbsp; &nbsp; &nbsp;
     
-      <el-link href="" target="_blank" icon = "el-icon-phone" style="color:#fff2db;font-size:1vw">联系我们</el-link>
+      <el-link href="contactUs.vue" target="_blank" icon = "el-icon-phone" style="color:#fff2db;font-size:1.3vw">联系我们</el-link>
+      &nbsp; &nbsp; &nbsp;
+       <el-link href="https://github.com/arthur262/58" target="_blank" icon = "el-icon-files" style="color:rgb(238, 191, 175);font-size:1.3vw">开源代码</el-link>
     
     
   </footer>
@@ -73,10 +75,9 @@ export default {
 }
 .foot{
   display:inline-block;
-  vertical-align:middle;
+  vertical-align: middle;
   position: relative;
-  line-height: 70px;
-  height: 70px;
+  line-height: 70px; 
   width: 100%;
   background: rgba(136, 136, 136, 0.75);
 }

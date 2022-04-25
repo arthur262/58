@@ -13,8 +13,8 @@
       </el-col>
 
       <el-col :span="4">
-        <el-link href="#" target="" style="color: white; font-size: 1.5vw"
-          >哈法留学万事屋</el-link>
+        <el-link href="/" target="" style="color: white; font-size: 1.5vw">
+        哈法留学万事屋</el-link>
       </el-col>
 
       <el-col :span="8">
@@ -27,9 +27,18 @@
         />
       </el-col>
 
+       <el-col :span="1">
+         <el-button type="primary"
+         icon="el-icon-search"
+         
+         
+         >搜索</el-button>
+         
+       </el-col>
+
       <el-col :span="4">
         <el-button type="text" class="fb">
-          <el-link href="/Submit" style="font-size: 1vw; margin-left: 145px; color: yellow;"> 发布</el-link></el-button
+          <el-link href="/Submit" style="font-size: 1vw; margin-left: 145px; color: yellow;">发布</el-link></el-button
         >
       </el-col>
       <el-col :span="2"> </el-col>
@@ -86,5 +95,6 @@ export default {
     top: 50%;
     transform: translate(0, -50%);
     margin: auto;
+    color: rgba(170, 208, 255, 0.966);
 }
 </style>
