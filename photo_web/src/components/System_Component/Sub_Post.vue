@@ -2,19 +2,19 @@
   <div>
     <el-card shadow="always" class="poster_box" style="border-radius: 1.5ch">
       <h2>上传照片</h2>
+      
       <div>
         <el-upload
-          action="https://jsonplaceholder.typicode.com/posts/"
+          action="#"
           list-type="picture-card"
-          :on-preview="handlePictureCardPreview"
-          :on-remove="handleRemove"
+          :http-request="modeUpload"
+          :file-list="mode"
+          :before-upload="beforeAvatarUpload"
         >
           <i class="el-icon-plus"></i>
         </el-upload>
-        <el-dialog v-model="dialogVisible">
-          <img width="100%" :src="dialogImageUrl" alt="" />
-        </el-dialog>
       </div>
+      <el-image style="width: 100px; height: 100px" id="example"/>
       <el-form ref="form" :model="form" label-width="80px">
         <!-- 地区 -->
         <h3>选择地区</h3>
@@ -82,7 +82,7 @@
             </el-select>
           </el-form-item>
           <el-form-item label="表显里程">
-            <el-input v-model="form.mile"  type="number" clearable />
+            <el-input v-model="form.mile" type="number" clearable />
           </el-form-item>
         </div>
 
@@ -108,7 +108,7 @@
 export default {
   data() {
     return {
-      dialogImageUrl: "",
+      mode: [],
       dialogVisible: false,
       form: {
         category: "",
@@ -122,21 +122,58 @@ export default {
     };
   },
   methods: {
-    handleRemove(file, fileList) {
-      console.log(file, fileList);
-    },
-    handlePictureCardPreview(file) {
-      this.dialogImageUrl = file.url;
-      this.dialogVisible = true;
-    },
-    onSubmit() {
-      console.log(this.form);
-    },
-    clearAll(){
+    clearAll() {
       for (var item in this.form) {
         delete this.form[item];
       }
-    }
+    },
+    onSubmit() {
+      console.log(this.form);
+      console.log(this.mode[0].size);
+    },
+
+    modeUpload() {
+       
+    },
+    //用来防止输入一些奇怪的东西
+    beforeAvatarUpload(file) {
+      var isJPG = false;
+      var isLt2M = false;
+      try {
+        isJPG = file.type === "image/jpeg";
+        isLt2M = file.size / 1024 / 1024 < 2;
+      } catch (e) {
+        this.$message.error("请不要攻击网站");
+      }
+      if (!isJPG) {
+        this.$message.error("上传头像图片只能是 JPG 格式!");
+      }
+      if (!isLt2M) {
+        this.$message.error("上传头像图片大小不能超过 2MB!");
+      }
+      return isJPG && isLt2M;
+    },
+    handleCompressImage(img,type) {
+            let reader = new FileReader();
+            // 读取文件
+            reader.readAsDataURL(img);
+            reader.onload = function (e) {
+                let image = new Image(); //新建一个img标签
+                image.src = e.target.result;
+                image.onload = function () {
+                    let canvas = document.createElement('canvas');
+                    let context = canvas.getContext('2d');
+                    // 定义 canvas 大小，也就是压缩后下载的图片大小
+                    let imageWidth = 300; //压缩后图片的大小
+                    let imageHeight = 200;
+                    canvas.width = imageWidth;
+                    canvas.height = imageHeight;
+                    // 图片不压缩，全部加载展示
+                    context.drawImage(image, 0, 0, imageWidth,imageHeight);
+                    return canvas.toDataURL(`image/${type}`);
+                };
+            }
+        }
   },
 };
 </script>
