@@ -8,8 +8,8 @@
         <el-upload
           action="#"
           list-type="picture-card"
-          :http-request="modeUpload"
-          :file-list="mode"
+          :http-request="addImage"
+          :on-remove="removeImage"
           :before-upload="beforeAvatarUpload"
         >
           <i class="el-icon-plus"></i>
@@ -117,11 +117,11 @@
 </template>
 
 <script>
+
 export default {
   data() {
     return {
       mode: [],
-      dialogVisible: false,
       form: {
         title: "",
         region: "",
@@ -155,14 +155,39 @@ export default {
     };
   },
   methods: {
+    
     clearAll() {
       for (var item in this.form) {
         delete this.form[item];
       }
     },
     onSubmit() {
-    
-      console.log(this.checkValid('form'));
+      Promise.all([this.checkValid('form')],[this.imageUpload()])
+      .then(() => {
+        
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+      
+    },
+    imageUpload(){
+      return new Promise((resolve, reject) => {
+        this.axios
+          .post("/api/image", 
+          headers: {
+    'Content-Type': 'multipart/form-data'
+  },
+          { "imageList": this.mode})
+          .then((response) => {
+            console.log(response);
+            resolve();
+          })
+          .catch(function (error) {
+            console.log(error);
+            reject();
+          });
+      });
     },
     checkValid(formName){
       var condition= false;
@@ -177,7 +202,15 @@ export default {
       return condition;
     },
 
-    modeUpload() {},
+
+
+    addImage(file) {
+      this.mode.push(file.file);
+    },
+    removeImage(file){
+      var index=this.mode.indexOf(file.file);
+      this.mode.splice(index-1,1);
+    },
     //用来防止输入一些奇怪的东西
     beforeAvatarUpload(file) {
       var isJPG = false;
@@ -196,6 +229,8 @@ export default {
       }
       return isJPG && isLt2M;
     },
+
+    //canvas压缩
     handleCompressImage(img, type) {
       let reader = new FileReader();
       // 读取文件
