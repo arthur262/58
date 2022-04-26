@@ -1,8 +1,9 @@
+
 <template>
   <div>
     <el-card shadow="always" class="poster_box" style="border-radius: 1.5ch">
       <h2>上传照片</h2>
-      
+
       <div>
         <el-upload
           action="#"
@@ -14,11 +15,17 @@
           <i class="el-icon-plus"></i>
         </el-upload>
       </div>
-      <el-image style="width: 100px; height: 100px" id="example"/>
-      <el-form ref="form" :model="form" label-width="80px">
+
+      <el-form
+        ref="form"
+        :model="form"
+        label-width="80px"
+        :rules="rules"
+        class="demo-ruleForm"
+      >
         <!-- 地区 -->
         <h3>选择地区</h3>
-        <el-form-item label="活动区域">
+        <el-form-item label="活动区域" prop="region">
           <el-select v-model="form.region" placeholder="选择区域">
             <el-option label="Whole Halifax" value="Whole Halifax"></el-option>
             <el-option
@@ -32,7 +39,7 @@
         </el-form-item>
         <!-- 类别 -->
         <h3>选择类别</h3>
-        <el-form-item label="类别">
+        <el-form-item label="类别" prop="category">
           <el-select v-model="form.category" placeholder="请选择出售的类别">
             <el-option label="汽车" value="汽车"></el-option>
             <el-option label="家具" value="家具"></el-option>
@@ -42,21 +49,23 @@
           </el-select>
         </el-form-item>
         <!-- 如果是汽车的类目 -->
-        <div v-if="form.category == '汽车'">
+        <div v-show="form.category == '汽车'">
           <el-form-item>
             <el-switch
-              v-model="form.lease"
+              v-model="car_form.lease"
               size="large"
               active-text="转lease"
               inactive-text="二手车"
             />
           </el-form-item>
-          <el-form-item label="车型">
-            <el-input v-model="form.model" clearable />
+          <el-form-item label="车型" >
+            <el-input v-model="car_form.model" clearable />
           </el-form-item>
 
-          <el-form-item label="几几年款">
-            <el-select v-model="form.offset" placeholder="2020年款">
+          <el-form-item label="几几年款" >
+            <el-select v-model="car_form.offset" placeholder="2022年款">
+              <el-option label="2020" value="2022"></el-option>
+              <el-option label="2019" value="2021"></el-option>
               <el-option label="2020" value="2020"></el-option>
               <el-option label="2019" value="2019"></el-option>
               <el-option label="2018" value="2018"></el-option>
@@ -81,12 +90,15 @@
               <el-option label="2000" value="2000"></el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="表显里程">
-            <el-input v-model="form.mile" type="number" clearable />
+          <el-form-item label="表显里程" >
+            <el-input v-model="car_form.mile" type="number" clearable  />
           </el-form-item>
         </div>
 
-        <el-form-item label="信息描述">
+        <el-form-item label="标题" prop="title">
+          <el-input v-model="form.title" clearable />
+        </el-form-item>
+        <el-form-item label="信息描述" prop="desc">
           <el-input
             v-model="form.desc"
             type="textarea"
@@ -96,7 +108,7 @@
           />
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="onSubmit">上传</el-button>
+          <el-button type="primary" @click="onSubmit()">上传</el-button>
           <el-button @click="clearAll">清空</el-button>
         </el-form-item>
       </el-form>
@@ -111,13 +123,34 @@ export default {
       mode: [],
       dialogVisible: false,
       form: {
+        title: "",
+        region: "",
         category: "",
+        desc: "",
+      },
+      //如果是汽车拥有这些
+      car_form: {
         lease: false,
         model: "",
-        region: "",
-        offset: 0,
-        mile: 0,
-        desc: "",
+        offset: null,
+        mile: null,
+      },
+
+      rules: {
+        title: [
+          { required: true, message: "请输入标题", trigger: "blur" },
+          { min: 3, message: "请至少输入3个字", trigger: "blur" },
+        ],
+        desc: [
+          { required: true, message: "请输入描述", trigger: "blur" }
+          ],
+        region: [
+          { required: true, message: "请选择活动区域", trigger: "change" },
+        ],
+        category: [
+          { required: true, message: "请选择类别", trigger: "change" },
+        ],
+        
       },
     };
   },
@@ -128,13 +161,23 @@ export default {
       }
     },
     onSubmit() {
-      console.log(this.form);
-      console.log(this.mode[0].size);
+    
+      console.log(this.checkValid('form'));
+    },
+    checkValid(formName){
+      var condition= false;
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          condition=true;
+        } else {
+          this.$message.error("上传未成功");
+          condition=false;
+        }
+      });
+      return condition;
     },
 
-    modeUpload() {
-       
-    },
+    modeUpload() {},
     //用来防止输入一些奇怪的东西
     beforeAvatarUpload(file) {
       var isJPG = false;
@@ -153,27 +196,27 @@ export default {
       }
       return isJPG && isLt2M;
     },
-    handleCompressImage(img,type) {
-            let reader = new FileReader();
-            // 读取文件
-            reader.readAsDataURL(img);
-            reader.onload = function (e) {
-                let image = new Image(); //新建一个img标签
-                image.src = e.target.result;
-                image.onload = function () {
-                    let canvas = document.createElement('canvas');
-                    let context = canvas.getContext('2d');
-                    // 定义 canvas 大小，也就是压缩后下载的图片大小
-                    let imageWidth = 300; //压缩后图片的大小
-                    let imageHeight = 200;
-                    canvas.width = imageWidth;
-                    canvas.height = imageHeight;
-                    // 图片不压缩，全部加载展示
-                    context.drawImage(image, 0, 0, imageWidth,imageHeight);
-                    return canvas.toDataURL(`image/${type}`);
-                };
-            }
-        }
+    handleCompressImage(img, type) {
+      let reader = new FileReader();
+      // 读取文件
+      reader.readAsDataURL(img);
+      reader.onload = function (e) {
+        let image = new Image(); //新建一个img标签
+        image.src = e.target.result;
+        image.onload = function () {
+          let canvas = document.createElement("canvas");
+          let context = canvas.getContext("2d");
+          // 定义 canvas 大小，也就是压缩后下载的图片大小
+          let imageWidth = 300; //压缩后图片的大小
+          let imageHeight = 200;
+          canvas.width = imageWidth;
+          canvas.height = imageHeight;
+          // 图片不压缩，全部加载展示
+          context.drawImage(image, 0, 0, imageWidth, imageHeight);
+          return canvas.toDataURL(`image/${type}`);
+        };
+      };
+    },
   },
 };
 </script>
