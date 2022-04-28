@@ -1,4 +1,3 @@
-
 <template>
   <div>
     <el-card shadow="always" class="poster_box" style="border-radius: 1.5ch">
@@ -15,12 +14,11 @@
           <i class="el-icon-plus"></i>
         </el-upload>
       </div>
-
+      <!--  :rules="rules" -->
       <el-form
         ref="form"
         :model="form"
         label-width="80px"
-        :rules="rules"
         class="demo-ruleForm"
       >
         <!-- 地区 -->
@@ -58,11 +56,11 @@
               inactive-text="二手车"
             />
           </el-form-item>
-          <el-form-item label="车型" >
+          <el-form-item label="车型">
             <el-input v-model="car_form.model" clearable />
           </el-form-item>
 
-          <el-form-item label="几几年款" >
+          <el-form-item label="几几年款">
             <el-select v-model="car_form.offset" placeholder="2022年款">
               <el-option label="2020" value="2022"></el-option>
               <el-option label="2019" value="2021"></el-option>
@@ -90,8 +88,8 @@
               <el-option label="2000" value="2000"></el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="表显里程" >
-            <el-input v-model="car_form.mile" type="number" clearable  />
+          <el-form-item label="表显里程">
+            <el-input v-model="car_form.mile" type="number" clearable />
           </el-form-item>
         </div>
 
@@ -117,11 +115,9 @@
 </template>
 
 <script>
-
 export default {
   data() {
     return {
-      mode: [],
       form: {
         title: "",
         region: "",
@@ -136,49 +132,46 @@ export default {
         mile: null,
       },
 
-      rules: {
-        title: [
-          { required: true, message: "请输入标题", trigger: "blur" },
-          { min: 3, message: "请至少输入3个字", trigger: "blur" },
-        ],
-        desc: [
-          { required: true, message: "请输入描述", trigger: "blur" }
-          ],
-        region: [
-          { required: true, message: "请选择活动区域", trigger: "change" },
-        ],
-        category: [
-          { required: true, message: "请选择类别", trigger: "change" },
-        ],
-        
-      },
+      // rules: {
+      //   title: [
+      //     { required: true, message: "请输入标题", trigger: "blur" },
+      //     { min: 3, message: "请至少输入3个字", trigger: "blur" },
+      //   ],
+      //   desc: [
+      //     { required: true, message: "请输入描述", trigger: "blur" }
+      //     ],
+      //   region: [
+      //     { required: true, message: "请选择活动区域", trigger: "change" },
+      //   ],
+      //   category: [
+      //     { required: true, message: "请选择类别", trigger: "change" },
+      //   ],
+
+      // },
+      mode: new FormData(),
     };
   },
   methods: {
-    
     clearAll() {
       for (var item in this.form) {
         delete this.form[item];
       }
     },
     onSubmit() {
-      Promise.all([this.checkValid('form')],[this.imageUpload()])
-      .then(() => {
-        
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-      
+      for (let [a, b] of this.mode.entries()) {
+        console.log(a, b, "--------------");
+      }
+      this.imageUpload();
+      // Promise.all([this.checkValid("form")], [])
+      //   .then(() => {})
+      //   .catch((err) => {
+      //     console.error(err);
+      //   });
     },
-    imageUpload(){
+    imageUpload() {
       return new Promise((resolve, reject) => {
         this.axios
-          .post("/api/image", 
-          headers: {
-    'Content-Type': 'multipart/form-data'
-  },
-          { "imageList": this.mode})
+          .post("/api/image", this.mode)
           .then((response) => {
             console.log(response);
             resolve();
@@ -189,28 +182,39 @@ export default {
           });
       });
     },
-    checkValid(formName){
-      var condition= false;
+    checkValid(formName) {
+      var condition = false;
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          condition=true;
+          condition = true;
         } else {
           this.$message.error("上传未成功");
-          condition=false;
+          condition = false;
         }
       });
       return condition;
     },
 
-
-
     addImage(file) {
-      this.mode.push(file.file);
+      this.file = file.file;
+      // FileReader api 为用户提供了方法去读取一个文件或者一个二进制大对象，
+      // 并且提供了事件模型让用户可以操作读取后的结果
+      const reader = new FileReader();
+      // readAsDataURL：读取为base64格式
+      reader.readAsDataURL(this.file);
+      // onload 在文件读取成功时触发
+      reader.onload = () => {
+        const ImgBase64 = reader.result;
+        // 实现预览，实际是拿到图片的base64数据去挂在到图片的src上
+        this.imgUrl = ImgBase64;
+      };
+      this.mode.append("file", this.file,this.file.name);
     },
-    removeImage(file){
-      var index=this.mode.indexOf(file.file);
-      this.mode.splice(index-1,1);
+
+    removeImage(file) {
+      this.mode.delete("file",file.name);
     },
+
     //用来防止输入一些奇怪的东西
     beforeAvatarUpload(file) {
       var isJPG = false;
