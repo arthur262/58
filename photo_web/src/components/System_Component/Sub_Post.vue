@@ -158,9 +158,6 @@ export default {
       }
     },
     onSubmit() {
-      for (let [a, b] of this.mode.entries()) {
-        console.log(a, b, "--------------");
-      }
       this.imageUpload();
       // Promise.all([this.checkValid("form")], [])
       //   .then(() => {})

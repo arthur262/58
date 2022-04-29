@@ -3,7 +3,6 @@ var router = express.Router()
 var multiparty = require('multiparty')
 
 var OSS = require('ali-oss')
-var fs = require('fs')
 
 var client = new OSS({
 	region: 'oss-us-west-1',
@@ -22,33 +21,34 @@ const rules = [
 
 async function put(element) {
 	try {
-		const result = await client.put(element.name, element)
-
-		console.log(result)
+		const result = await client.put(
+			'/image/' + element.originalFilename,
+			element.path,
+			{ rules }
+		)
+		return result.res.requestUrls[0]
 	} catch (e) {
 		console.log(e)
 	}
 }
 
-/* GET home page. */
+
 router.post('/', (req, res, next) => {
+	
 	let form = new multiparty.Form()
-	var imagelist = null
 	form.parse(req, function (err, fields, file) {
-		imagelist = file.file
+		var url_list=[];
+		const imagelist = file.file
+		for (let index = 0; index < imagelist.length; index++) {
+			put(imagelist[index]).then(function (url) {
+				url_list.push(url);
+			})
+			
+		}
+		console.log(url_list);
+		// res.send(url_list);
 	})
-	for (let index = 0; index < imagelist.length; index++) {
-        
-		var lastName = imagelist[index].name.splice(0, 20)
-		var fileName = Date.now() + lastName
-		fs.rename(fileName, imagelist[index], err => {
-			if (err) {
-				console.log('出错')
-			} else {
-				console.log('未出错')
-			}
-		})
-	}
+
 })
 
 module.exports = router
