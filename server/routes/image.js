@@ -34,18 +34,20 @@ async function put(element) {
 
 
 router.post('/', (req, res, next) => {
-	
+
 	let form = new multiparty.Form()
 	form.parse(req, function (err, fields, file) {
-		var url_list=[];
+		var url_list = [];
 		const imagelist = file.file
-		for (let index = 0; index < imagelist.length; index++) {
+
+		for (let index = 0; index < imagelist.length;index++) {
 			put(imagelist[index]).then(function (url) {
 				url_list.push(url);
+				
 			})
-			
 		}
 		console.log(url_list);
+		
 		// res.send(url_list);
 	})
 
