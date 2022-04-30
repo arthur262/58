@@ -53,7 +53,7 @@ router.post('/', function (req, res, next) {
 					
 					if (!err) {
 						res.send(docs)
-					}
+					}             
 				}).sort({"time": 1}).limit(10);
 			}else {
 			Poster.find({label: req.body.label}, (err, docs) => {
