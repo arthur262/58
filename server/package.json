@@ -18,7 +18,7 @@
 		"multiparty": "^4.2.3",
 		"path": "^0.12.7",
 		"prettier": "^2.6.2",
-		"pug": "2.0.0-beta11"
+		"pug": "^3.0.2"
 	},
 	"devDependencies": {
 		"@types/node": "^17.0.30"
