@@ -31,22 +31,32 @@ async function put(element) {
 		console.log(e)
 	}
 }
-
-router.post('/', async (req, res, next) => {
+async function  process(req) {
 	let form = new multiparty.Form()
 	var url_list = []
-	await function(){
+	await new Promise((resolve, reject) => {
 		form.parse(req, async function (err, fields, file) {
-			const imagelist = file.file
+			const imagelist = file.file;
 			for (let index = 0; index < imagelist.length; index++) {
 				await put(imagelist[index]).then(function (url) {
 					url_list.push(url)
 				})
 			}
-		})
-	}
-	console.log(url_list);
-
+			if(err) {
+				reject(err);
+			}
+			else{
+			resolve();
+			}
+		}
+		)
+	})
+	return url_list;
+}
+router.post('/', (req, res, next) => {
+	process(req).then(function (url) {
+		res.send(url);
+	})
 })
 
 module.exports = router
