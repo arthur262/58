@@ -2,14 +2,10 @@ var express = require('express')
 var router = express.Router()
 var multiparty = require('multiparty')
 
-var OSS = require('ali-oss')
 
-var client = new OSS({
-	region: 'oss-us-west-1',
-	accessKeyId: 'LTAI5tNQsBGbaAdK5sbyGn8k',
-	accessKeySecret: 'UXlbGF074BESn3HzYxheohB6oMeJLf',
-	bucket: '58xiangmu'
-})
+
+var client = require('./key')
+
 const rules = [
 	{
 		// 指定允许的跨域请求方法，支持GET、PUT、DELETE、POST和HEAD方法。
