@@ -20,9 +20,9 @@
         <!-- 显示文字 -->
         <el-col :span="16">
           <div class="card_detail">
-            <h3 style="font-weight: bold; margin:0.5ch 0.5ch 0.5ch 0ch">
+            <h5 style="font-weight: bold; margin:0.5ch 0.5ch 0.5ch 0ch">
               {{ item.title }}
-            </h3>
+            </h5>
             <el-row style="line-height:0.5em;">
                 <el-col :span="16" style="display:flex;">
                     <p style="font-weight: bold;margin:auto 0.5ch; color:var(--el-color-primary);">
@@ -60,9 +60,9 @@
        
         <router-link :to="'/Post_detail?post='+item._id">
           <div class="card_detail">
-            <h3 style="font-weight: bold; margin:0.5ch 0.5ch 0.5ch 0ch">
+            <h5 style="font-weight: bold; margin:0.5ch 0.5ch 0.5ch 0ch">
               {{ item.title }}
-            </h3>
+            </h5>
             <el-row style="line-height:0.5em;">
                 <el-col :span="16" style="display:flex;">
                     <p style="font-weight: bold;margin-right:1ch; color:var(--el-color-primary);">
@@ -106,9 +106,9 @@
         <!-- 显示文字 -->
        <router-link :to="'/Post_detail?post='+item._id">
           <div class="card_detail">
-            <h3 style="font-weight: bold; margin:0.5ch 0.5ch 0.5ch 0ch">
+            <h5 style="font-weight: bold; margin:0.5ch 0.5ch 0.5ch 0ch">
               {{ item.title }}
-            </h3>
+            </h5>
             <el-row style="line-height:0.5em;">
                 <el-col :span="16" style="display:flex;">
                     <p style="font-weight: bold;margin-right:1ch; color:var(--el-color-primary);">

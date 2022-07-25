@@ -1,6 +1,6 @@
 <template>
-  <h3 style="margin-left: 4%">快速导航</h3>
   <div class="container shadow_lisght" ref="quick_box">
+  
     <el-row>
       <el-col :span="5">
           <div style="margin-top:2ch;">
@@ -79,28 +79,5 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.container {
-  padding: 1.5ch;
-  border-radius: 1.5ch;
-  max-width: 100ch;
-  min-width: 90%;
-  margin: 0 1ch;;
-  background-color: #ffffff;
-}
-.el-carousel__item h3 {
-  color: #475669;
-  font-size: 18px;
-  opacity: 0.75;
-  line-height: 300px;
-  margin: 0;
-  text-align: center;
-}
 
-.el-carousel__item:nth-child(2n) {
-  background-color: #99a9bf;
-}
-
-.el-carousel__item:nth-child(2n + 1) {
-  background-color: #d3dce6;
-}
 </style>

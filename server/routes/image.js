@@ -2,10 +2,14 @@ var express = require('express')
 var router = express.Router()
 var multiparty = require('multiparty')
 
+var OSS = require('ali-oss')
 
-
-var client = require('./key')
-
+var client = new OSS({
+	region: 'oss-us-west-1',
+	accessKeyId: 'LTAI5tNQsBGbaAdK5sbyGn8k',
+	accessKeySecret: 'UXlbGF074BESn3HzYxheohB6oMeJLf',
+	bucket: '58xiangmu'
+})
 const rules = [
 	{
 		// 指定允许的跨域请求方法，支持GET、PUT、DELETE、POST和HEAD方法。
@@ -27,24 +31,32 @@ async function put(element) {
 		console.log(e)
 	}
 }
-
-
-router.post('/',   (req, res, next) => {
-
+async function  process(req) {
 	let form = new multiparty.Form()
-	form.parse(req, async function (err, fields, file) {
-		var url_list = [];
-		const imagelist = file.file
-		for (let index = 0; index < imagelist.length;index++) {
-			await put(imagelist[index]).then(function (url) {
-				 url_list.push(url);
-				
-			})
+	var url_list = []
+	await new Promise((resolve, reject) => {
+		form.parse(req, async function (err, fields, file) {
+			const imagelist = file.file;
+			for (let index = 0; index < imagelist.length; index++) {
+				await put(imagelist[index]).then(function (url) {
+					url_list.push(url)
+				})
+			}
+			if(err) {
+				reject(err);
+			}
+			else{
+			resolve();
+			}
 		}
-		
-		 res.send(url_list);
+		)
 	})
-
+	return url_list;
+}
+router.post('/', (req, res, next) => {
+	process(req).then(function (url) {
+		res.send(url);
+	})
 })
 
 module.exports = router
