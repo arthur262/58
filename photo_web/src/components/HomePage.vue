@@ -2,13 +2,13 @@
   <div>
   <div style="max-width: 90ch; margin: 0px auto;">
     <h3 style="margin: 1ch 2ch">快速导航</h3>
-    <div class="container shadow_lisght" ref="quick_box">
+    <div class="container shadow_lisght" >
       <el-row>
-        <el-col :span="5">
+        <el-col :sm="24" :md="5" >
           <div style="margin-top: 2ch">
-            <el-menu default-active="" class="el-menu-vertical-demo" router>
+            <el-menu  class="el-menu-vertical-demo" router>
               <el-menu-item index="/Home/Card">
-                <span>二手车</span>
+                <span>二手车   </span>
               </el-menu-item>
 
               <el-menu-item index="/Home/PosterList?view=jiaju">
@@ -29,7 +29,7 @@
             </el-menu>
           </div>
         </el-col>
-        <el-col :span="19">
+        <el-col :sm="24" :md="19">
           <el-carousel
             :interval="5000"
             arrow="always"
@@ -50,8 +50,6 @@
 <script>
 import Post from "@/components/Buy&Sell/Detail_Poster.vue";
 import "@/css/shadow.css";
-import { is_phone } from "@/js/phone_test.js";
-import { ref } from "vue";
 
 export default {
   name: "HomePage",
@@ -63,25 +61,13 @@ export default {
       cout: 100,
     };
   },
-  setup: function () {
-    const quick_box = ref(null);
-    const getDom = () => {
-      quick_box.value.style = "min-width:20ch";
-    };
-    return { quick_box, getDom };
-  },
   mounted: function () {
-    this.testwidth();
   },
   methods: {
     handleSelect(keyPath) {
       this.activeIndex = keyPath;
     },
-    testwidth() {
-      if (!is_phone()) {
-        this.getDom();
-      }
-    },
+    
   },
 };
 </script>
@@ -94,6 +80,7 @@ export default {
   min-width: fit-content;
   margin: 0 1ch;
   background-color: #ffffff;
+  min-width: 20ch;
 }
 .el-carousel__item h3 {
   color: #475669;
